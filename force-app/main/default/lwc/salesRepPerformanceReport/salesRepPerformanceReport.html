@@ -1,0 +1,49 @@
+<template>
+    <lightning-card>
+        <template if:true={isLoading}>
+            <lightning-spinner
+                alternative-text="Loading"
+                variant="brand">
+            </lightning-spinner>
+        </template>
+
+        <div class="slds-p-horizontal_medium">
+            <div class="slds-grid slds-m-bottom_medium">
+                <lightning-input
+                    class="slds-size_1-of-2"
+                    type="date"
+                    name="startDate"
+                    label="Start Date"
+                    required
+                    value={startDate}
+                    min={minStartDate}
+                    max={maxStartDate}
+                    onchange={handleChange}>
+                </lightning-input>
+
+                <lightning-input
+                    class="slds-size_1-of-2"
+                    type="date"
+                    name="endDate"
+                    label="End Date"
+                    required
+                    value={endDate}
+                    min={minEndDate}
+                    max={maxEndDate}
+                    onchange={handleChange}>
+                </lightning-input>
+            </div>
+
+            <lightning-datatable
+                key-field="id"
+                data={data}
+                columns={columns}
+                hide-checkbox-column
+                default-sort-direction={defaultSortDirection}
+                sorted-direction={sortDirection}
+                sorted-by={sortedBy}
+                onsort={handleSort}>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>
